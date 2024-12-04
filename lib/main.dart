@@ -5,19 +5,20 @@ import 'pages/pied_de_page.dart';
 import 'pages/app_bar_page.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     home: HomePage(),
     debugShowCheckedModeBanner: false,
   ));
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarPage(),
+      key: _scaffoldKey,
+      appBar: AppBarPage(scaffoldKey: _scaffoldKey),
       drawer: const DrawerPage(),
       body: BodyAccueil(),
       bottomNavigationBar: const PiedDePage(),

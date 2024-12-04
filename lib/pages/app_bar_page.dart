@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppBarPage extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarPage({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const AppBarPage({super.key, required this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +14,13 @@ class AppBarPage extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       backgroundColor: const Color(0xFF5F67EA),
-      // leading: const Icon(
-      //   Icons.menu,
-      //   color: Colors.white,
-      // ),
+      leading: IconButton(
+        icon: const Icon(Icons.menu),
+        color: Colors.white,
+        onPressed: () {
+          scaffoldKey.currentState?.openDrawer();
+        }
+      ),
     );
   }
 
